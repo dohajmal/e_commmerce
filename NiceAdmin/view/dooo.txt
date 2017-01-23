@@ -1,0 +1,32 @@
+<?php include_once '../view/hedearcss.php'; ?>
+<?php include '../view/header.php'    ?>
+<?php include '../view/sidebar.php' ?>
+<?php  
+
+include('../include/chargerClasse.php'); ?>
+
+	  <?php include '../view/sidebar.php' ?>
+	  
+	    <section id="main-content">
+          <section class="wrapper"> 
+ 	  
+<div class="CSSTableGenerator" >
+
+<form method="GET" >
+<?php
+ echo"<table style='border: 1px solid #000000;'>";
+   echo"<tr ><td>id</td><td>nom</td><td>URL</td><td></td><td></td></tr>";
+ foreach($Menu= $addMenuMan->getlistMenu()->fetchall(PDO::FETCH_ASSOC) as $res){
+	 echo"<tr><td>".$res['id']."</td><td>".$res['nom']."</td><td>".$res['URL']."</td><td><a href='modifiermenu.php?id=".$res['id']."'>Modifier</a></td><td><a href='supprimemenu.php?id=".$res['id']."'>supprimer</a></td></tr>";
+ }
+ ?>
+<tr><td>
+<input type="submit"  name="Add" value="Add" style="margin-left:712%;"/></td></tr>
+
+<?php echo"</table>";?>
+</form>
+<?php
+if (isset($_GET["Add"]))
+ {
+	header('../view/addMenu.php');
+ }?>

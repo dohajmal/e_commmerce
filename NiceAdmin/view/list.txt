@@ -1,0 +1,74 @@
+<?php  
+
+include('../include/chargerClasse.php'); ?>
+<?php include_once 'hedearcss.php'; ?>
+<?php include 'header.php'    ?>
+<?php include 'sidebar.php' ?>
+
+      <section id="main-content">
+          <section class="wrapper">
+		  <div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa-table"></i> Table</h3>
+					
+				</div>
+			</div>
+              <!-- page start-->
+              <div class="row">
+                  <div class="col-sm-6">
+                      <section class="panel">
+                          <header class="panel-heading">
+                              Basic Table
+                          </header>
+                          <table class="table">
+                              <thead>
+                              <tr>
+                                
+                                  <th>ID</th>
+                                  <th>Name</th>
+                                  <th>URL</th>
+								  <th>Actions</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+							  	<?php  
+		   foreach($Menu= $addMenuMan->getlistMenu()->fetchall(PDO::FETCH_ASSOC) as $res){
+			   ?>
+                                  <td><?= $res['id']; ?></td>
+                                  <td><?= $res['nom']; ?></td>
+                                  <td><?= $res['URL']; ?></td>
+                                  <td><a href="modifiermenu.php?id=<?= $res['id'];?>" value="update" class="myButton">update</a> <a href="supprimiermenu.php?id=<?= $res['id'];?>" value="delete" class="myButton">delete</a></td>
+                              </tr>
+							   <?php } ?> 
+                            
+                                
+                              </tr>
+                              </tbody>
+                          </table>
+                      </section>
+                  </div>
+    
+              </div>
+        
+              </div>
+   
+ 
+              <!-- page end-->
+          </section>
+      </section>
+      <!--main content end-->
+  </section>
+  <!-- container section end -->
+    <!-- javascripts -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- nicescroll -->
+    <script src="js/jquery.scrollTo.min.js"></script>
+    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!--custome script for all page-->
+    <script src="js/scripts.js"></script>
+
+
+  </body>
+</html>
